@@ -3,7 +3,18 @@ L.LocShare = {}
 var LS = L.LocShare
 LS.Send = {}
 LS.Send.Marker = {}
-LS.Send.Popup = L.popup().setContent('<div><input id="sendText" type="text" style="border-color:#a7a7a7;border:solid;border-width:2px;border-radius:5px;height:30px;" size="30" onkeyup="L.LocShare.Send.UpdateMessage( this )" placeholder="enter your message"/></div><div style="height:35px;"><button style="border-style:solid;border-radius:5px;border-color:#3d94f6;float:right;color:white;background-color:#3d94f6;height:35px;font-size:15px;line-height:3px;margin:5px;" onclick="copyPrompt()">get url</button></div></div>')
+LS.Send.Popup = L.responsivePopup().setContent(`
+  <div>
+    <input id="sendText" type="text" style="border-color:#a7a7a7;border:solid;border-width:2px;border-radius:5px;height:30px;" size="30" onkeyup="L.LocShare.Send.UpdateMessage( this )" placeholder="Enter your message"/>
+  </div>
+  <div style="text-align:center">
+    <i class="link-icon fas fa-link fa-2x" onclick="copyPrompt()"></i>
+    <i class="link-icon fab fa-facebook fa-2x" onclick="shareFb()"></i>
+    <i class="link-icon fab fa-twitter fa-2x" onclick="shareTw()"></i>
+    <i class="link-icon fab fa-linkedin fa-2x" onclick="shareIn()"></i>
+    <i class="link-icon fab fa-whatsapp fa-2x" onclick="shareWA()"></i>
+  </div>
+`);
 LS.Receive = {}
 LS.Receive.Marker = {}
 LS.Receive.Popup = L.popup()
@@ -97,12 +108,32 @@ function getJsonFromUrl () {
 }
 
 
+function generateLink() {
+  return window.parent.location.origin + window.parent.location.pathname + '?' + 
+    'lat' + '=' + LS.Send.lat + '&' +
+    'lng' + '=' + LS.Send.lng + '&' +
+    'M' + '=' +  (LS.Send.Message !== undefined ? LS.Send.Message : "") +
+    window.location.hash;
+}
+
 function copyPrompt() {
-  window.prompt("Send this location with: Ctrl+C, Enter", '' + 
-                window.parent.location.origin + window.parent.location.pathname + '?' + 
-                'lat' + '=' + LS.Send.lat + '&' +
-                'lng' + '=' + LS.Send.lng + '&' +
-                 'M' + '=' +  LS.Send.Message);
+  window.prompt("Send this location with: Ctrl+C, Enter", generateLink());
+}
+
+function shareFb() {
+  window.open('https://www.facebook.com/sharer/sharer.php?u=' + generateLink(), '_blank');
+}
+
+function shareTw() {
+  window.open('https://twitter.com/intent/tweet?url=' + generateLink(), '_blank');
+}
+
+function shareIn() {
+  window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + generateLink(), '_blank');
+}
+
+function shareWA() {
+  window.open('https://api.whatsapp.com/send?text=' + generateLink(), '_blank');
 }
 
 function placeMarker( selectedMap ){
