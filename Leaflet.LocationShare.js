@@ -121,19 +121,19 @@ function copyPrompt() {
 }
 
 function shareFb() {
-  window.open('https://www.facebook.com/sharer/sharer.php?u=' + generateLink(), '_blank');
+  window.open('https://www.facebook.com/sharer.php?u=' + encodeURIComponent(generateLink()), '_blank');
 }
 
 function shareTw() {
-  window.open('https://twitter.com/intent/tweet?url=' + generateLink(), '_blank');
+  window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(generateLink()), '_blank');
 }
 
 function shareIn() {
-  window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + generateLink(), '_blank');
+  window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(generateLink()), '_blank');
 }
 
 function shareWA() {
-  window.open('https://api.whatsapp.com/send?text=' + generateLink(), '_blank');
+  window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(generateLink()), '_blank');
 }
 
 function placeMarker( selectedMap ){
