@@ -5,84 +5,41 @@
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <meta charset=utf-8 />
   <title>Leaflet.ShareLocation</title>
+  <!-- FontAwesome for font icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!--  <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />-->
+  <!-- Bootstrap CSS -->
   <link href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet' />
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
   crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
+  <!-- Leaflet plugin for adding hashes in the URL -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-hash/0.2.1/leaflet-hash.min.js" integrity="sha512-0A4MbfuZq5Au9EdpI1S5rUTXlibNBi8CuZ/X3ycwXyZiCjNzpiO9YH6EMqPgzZm6vfNCuZStBQHjnO17nIC0IQ==" crossorigin="anonymous"></script>
+  <!-- Leaflet plugin for responsive popups -->
   <script src="https://unpkg.com/leaflet-responsive-popup@0.6.4/leaflet.responsive.popup.js"></script>
+  <!-- Leaflet responsive plugin CSS files -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet-responsive-popup@0.6.4/leaflet.responsive.popup.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-responsive-popup@0.6.4/leaflet.responsive.popup.rtl.css" />
+  <!-- Local Leaflet file -->
   <script src='Leaflet.LocationShare.js'></script>
   <style>
-  .mapContainer {
-    border-radius: 8px;
-    z-index: 5000;
-  }
-  .crop-box {
-    width: 70px;
-    height: 50px;
-    overflow: hidden;
-  }
-  .crop-box img {
-    max-height: 50px;
-    max-width: 70px;
-    margin: 0px 0px 0px 0px;
-    float:right;
-  }
-  .link-icon {
-    vertical-align: middle;
-    margin-right: 0.5rem;
-    margin-top: 1rem;
-    color: #3d94f6;
-    transition: color 0.5s;
-  }
-  .link-icon:hover {
-    cursor: pointer;
-    color: #3070b9;
-  }
+    /* Map border radius */
+    .mapContainer {
+      border-radius: 8px;
+      z-index: 5000;
+    }
   </style>
 </head>
   
 <body>
   <div class='container'>
     <div class='row'>
-      <div class='col-md-offset-1 col-md-10 '>
-        <h1>Leaflet.LocationShare <small>Client-Side location sharing for leaflet</small></h1>
-      </div>
-
-
-      <div class='col-md-offset-1 col-md-10 '>
+      <div class='col-sm-12'>
         <div id='map' style='width:5000px;height:400px;' class='mapContainer img-responsive'></div>
-        <div style="padding-top:15px;text-align:center;">
-          <h4>Usage:</h4>
-          <p>include <code> Leaflet.LocationShare.js</code> immediately after <code> http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js</code></p>
-          <p>For anything else, check out the <a href='https://github.com/CliffCloud/Leaflet.LocationShare'>project on GitHub</a>.</p>
-        </div>
-        <div style="float:right">
-          <table>
-            <tr>
-              <td style="width:50px">
-                <span class="crop-box">
-                  <a href="http://www.cliffcloud.com"><img class="topImage" src="http://www.cliffcloud.com/assets/images/cliffcloud_logo_small.png" /></a>
-                </span>
-              </td>
-              <td style="width:50px">
-                <span class="crop-box">
-                  <a href="https://github.com/CliffCloud/Leaflet.LocationShare"><img class="topImage" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" /></a>
-                </span>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <div class='col-md-1' style="float:right;">
-        </div>
       </div>
     </div>
   </div>

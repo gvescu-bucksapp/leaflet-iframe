@@ -13,6 +13,7 @@ LS.Send.Popup = L.responsivePopup().setContent(`
     <i class="link-icon fab fa-twitter fa-2x" onclick="shareTw()"></i>
     <i class="link-icon fab fa-linkedin fa-2x" onclick="shareIn()"></i>
     <i class="link-icon fab fa-whatsapp fa-2x" onclick="shareWA()"></i>
+    <i class="link-icon fas fa-sms fa-2x" onclick="shareSMS()"></i>
   </div>
 `);
 LS.Receive = {}
@@ -121,7 +122,7 @@ function copyPrompt() {
 }
 
 function shareFb() {
-  window.open('https://www.facebook.com/sharer.php?u=' + encodeURIComponent(generateLink()), '_blank');
+  window.open('https://www.facebook.com/sharer.php?u=' + encodeURIComponent(generateLink()) + '&redirect_url=' + window.parent.location.href, '_blank');
 }
 
 function shareTw() {
@@ -134,6 +135,10 @@ function shareIn() {
 
 function shareWA() {
   window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(generateLink()), '_blank');
+}
+
+function shareSMS() {
+  window.open('sms:?body=' + encodeURIComponent(generateLink()));
 }
 
 function placeMarker( selectedMap ){
